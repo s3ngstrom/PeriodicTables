@@ -36,11 +36,6 @@ function read(reservationId) {
 
 // Function to update a reservation
 function update(updatedRes) {
-  // Use knex to query the "reservations" table and select all columns
-  // Filter the results to only show the reservation with the specified reservation id
-  // Update the reservation with the updated data
-  // Return the updated reservation
-  // The returned value is an array, so access the first item to get the reservation object
   return knex("reservations")
     .select("*")
     .where({ reservation_id: updatedRes.reservation_id })
@@ -48,12 +43,8 @@ function update(updatedRes) {
     .then((updated) => updated[0]);
 }
 
-// Function to search for reservations by mobile number
+// search for reservations by mobile number
 function search(mobile_number) {
-  // Use knex to query the "reservations" table
-  // Filter the results to only show reservations whose mobile_number contains the search term
-  // Replace all non-digit characters in the search term with an empty string
-  // Order the results by reservation date
   return knex("reservations")
     .whereRaw(
       "translate(mobile_number, '() -', '') like ?",
@@ -62,7 +53,6 @@ function search(mobile_number) {
     .orderBy("reservation_date");
 }
 
-// Export the functions
 module.exports = {
   list,
   create,
