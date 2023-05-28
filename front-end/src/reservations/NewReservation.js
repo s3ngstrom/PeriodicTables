@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import ErrorAlert from "../layout/ErrorAlert";
-import {createReservation, readReservation, editReservation,} from "../utils/api";
+import {
+  createReservation,
+  readReservation,
+  editReservation,
+} from "../utils/api";
 
 // component for creating a new reservation or editing an existing one
 export default function NewReservation({
@@ -27,11 +31,11 @@ export default function NewReservation({
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;
-    async function getReservation(){
-      if(edit){
-        let reservation= await readReservation(reservation_id,signal)
-        console.log(reservation)
-        setFormData(reservation)
+    async function getReservation() {
+      if (edit) {
+        let reservation = await readReservation(reservation_id, signal);
+        console.log(reservation);
+        setFormData(reservation);
       }
     }
     getReservation();
@@ -39,7 +43,7 @@ export default function NewReservation({
       abortController.abort();
     };
   }, [edit, reservation_id]);
-  
+
   // updates the state of the form when the user makes any changes to it
   function handleChange({ target }) {
     setFormData({

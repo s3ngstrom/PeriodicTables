@@ -12,7 +12,6 @@ import Search from "../search/Search";
 
 /** defines all the routes for the application */
 function Routes() {
-
   const [reservations, setReservations] = useState([]);
   const [tables, setTables] = useState([]);
   const [tablesError, setTablesError] = useState(null);
@@ -56,15 +55,20 @@ function Routes() {
       </Route>
 
       <Route path="/reservations/new">
-        <NewReservation loadDashboard={loadDashboard}  />
+        <NewReservation loadDashboard={loadDashboard} />
       </Route>
 
       <Route path="/reservations/:reservation_id/edit">
-        <NewReservation loadDashboard={loadDashboard} edit={edit}  />
+        <NewReservation loadDashboard={loadDashboard} edit={edit} />
       </Route>
 
       <Route path="/reservations/:reservation_id/seat">
-        <SeatReservation date={date} tables={tables} setTables={setTables} loadDashboard={loadDashboard} />
+        <SeatReservation
+          date={date}
+          tables={tables}
+          setTables={setTables}
+          loadDashboard={loadDashboard}
+        />
       </Route>
 
       <Route path="/tables/new">

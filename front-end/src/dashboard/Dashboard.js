@@ -66,7 +66,9 @@ function Dashboard({ date, reservations, tables, loadDashboard }) {
   return (
     <div className="w-80 ml-3 pr-4 pt-4" style={{ fontFamily: "Rubik" }}>
       <main>
-        <h1 className="font-weight-bold d-flex justify-content-center mt-5 mb-4">Restaurant Dashboard</h1>
+        <h1 className="font-weight-bold d-flex justify-content-center mt-5 mb-4">
+          Restaurant Dashboard
+        </h1>
 
         <div className="d-flex justify-content-center mb-4">
           <button

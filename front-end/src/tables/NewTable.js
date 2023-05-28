@@ -10,7 +10,7 @@ export default function NewTable({ loadDashboard }) {
 
   // error state to store any error message
   const [error, setError] = useState(null);
-  /** 
+  /**
    * formData state to store the form data,
    * initially the table name and capacity are empty and set to 1
    */
@@ -73,14 +73,14 @@ export default function NewTable({ loadDashboard }) {
 
   return (
     // render the form to create a new table
-    <div style={{fontFamily: "Rubik"}}>
+    <div style={{ fontFamily: "Rubik" }}>
       <h2 className="font-weight-bold d-flex justify-content-center mt-4">
         New Table
       </h2>
       <div className="d-flex justify-content-center mt-4">
         <form className="font-weight-bold mt-2 w-75">
           {/* display the error message if there is any */}
-          { error && <ErrorAlert error={error} />}
+          {error && <ErrorAlert error={error} />}
 
           {/* table name input */}
           <label htmlFor="table_name">Table Name</label>
@@ -105,26 +105,26 @@ export default function NewTable({ loadDashboard }) {
             onChange={handleChange}
             value={formData.capacity}
             required
-            style={{color: "black"}}
+            style={{ color: "black" }}
           />
 
-  <div className="d-flex justify-content-center mt-4">
-  <button
-            type="submit"
-            onClick={handleSubmit}
-            className="btn btn-dark border-dark m-1"
-            style={{ color: "white" }}
-          >
-            Submit
-          </button>
-          <button
-            className="btn btn-danger m-1"
-            type="button"
-            onClick={history.goBack}
-          >
-            Cancel
-          </button>
-  </div>
+          <div className="d-flex justify-content-center mt-4">
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              className="btn btn-dark border-dark m-1"
+              style={{ color: "white" }}
+            >
+              Submit
+            </button>
+            <button
+              className="btn btn-danger m-1"
+              type="button"
+              onClick={history.goBack}
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </div>

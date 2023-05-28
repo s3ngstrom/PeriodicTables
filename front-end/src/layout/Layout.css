@@ -3,7 +3,6 @@
   min-width: 200px;
 }
 
-
 h1 {
   font-size: 48px;
   color: #2020131;
@@ -22,7 +21,9 @@ h3 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-table, th, td {
+table,
+th,
+td {
   color: #2020131;
   font-family: Arial, Helvetica, sans-serif;
   border: 1px dotted;

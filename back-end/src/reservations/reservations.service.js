@@ -55,8 +55,10 @@ function search(mobile_number) {
   // Replace all non-digit characters in the search term with an empty string
   // Order the results by reservation date
   return knex("reservations")
-    .whereRaw("translate(mobile_number, '() -', '') like ?",
-      `%${mobile_number.replace(/\D/g, "")}%` )
+    .whereRaw(
+      "translate(mobile_number, '() -', '') like ?",
+      `%${mobile_number.replace(/\D/g, "")}%`
+    )
     .orderBy("reservation_date");
 }
 
