@@ -5,7 +5,7 @@ export default function ListTables({ table, reservation_id, loadDashboard }) {
   if (!table) return null;
   console.log(table);
 
-  /** handles finishing a seated table */
+  // handles Finish button when a table is finished - requires user confirmation
   function handleFinish() {
     if (
       window.confirm(
@@ -21,13 +21,12 @@ export default function ListTables({ table, reservation_id, loadDashboard }) {
     }
   }
 
-  /** displays a list of all tables */
+// displays list of tables
   return (
     <tr className="text-center" style={{ fontFamily: "Rubik" }}>
       <th scope="row">{table.table_id}</th>
       <td>{table.table_name}</td>
       <td>{table.capacity}</td>
-      {/* <td data-table-id-status={table.table_id}>{table.status}</td> */}
       <td data-table-id-status={table.table_id}>
         {table.reservation_id ? "occupied" : "free"}
       </td>

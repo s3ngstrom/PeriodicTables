@@ -3,23 +3,19 @@ import { useHistory } from "react-router-dom";
 import ErrorAlert from "../layout/ErrorAlert";
 import { createTable } from "../utils/api";
 
-// NewTable component to create new table
+// create new table
 export default function NewTable({ loadDashboard }) {
-  // useHistory hook to redirect to previous page on cancel
   const history = useHistory();
-
-  // error state to store any error message
   const [error, setError] = useState(null);
-  /**
-   * formData state to store the form data,
-   * initially the table name and capacity are empty and set to 1
-   */
+ 
+  //formData state to store the form data,
+  // table name and capacity initialize empty and set to 1
   const [formData, setFormData] = useState({
     table_name: "",
     capacity: "",
   });
 
-  // handleChange function to update the form data when inputs change
+  // update the form data when input changes
   function handleChange({ target }) {
     setFormData({
       ...formData,
@@ -28,15 +24,11 @@ export default function NewTable({ loadDashboard }) {
     });
   }
 
-  // handleSubmit function to submit the form data and create a new table
+  // submit the form data and create a new table
   function handleSubmit(event) {
-    // prevent default form submission
     event.preventDefault();
     const abortController = new AbortController();
-
-    // validate form fields before creating the table
     if (validateFields()) {
-      // call createTable API to create the table
       createTable(formData, abortController.signal)
         .then(loadDashboard)
         .then(() => history.push(`/dashboard`))
@@ -47,42 +39,37 @@ export default function NewTable({ loadDashboard }) {
     return () => abortController.abort();
   }
 
-  // validateFields function to validate the form data before submission
+  // validate form data before submission
   function validateFields() {
     let foundError = null;
 
-    // check if table name and capacity fields are not empty
     if (formData.table_name === "" || formData.capacity === "") {
       foundError = {
         message:
           "invalid form: table name & capacity must be provided to create table",
       };
     } else if (formData.table_name.length < 2) {
-      // check if table name is at least 2 characters long
       foundError = {
         message:
           "invalid table name: table name must contain at least two characters",
       };
     }
 
-    // set the error state
     setError(foundError);
     // return true if no error found, false otherwise
     return foundError === null;
   }
 
   return (
-    // render the form to create a new table
+    // rendering form to create nnew table
     <div style={{ fontFamily: "Rubik" }}>
       <h2 className="font-weight-bold d-flex justify-content-center mt-4">
         New Table
       </h2>
       <div className="d-flex justify-content-center mt-4">
         <form className="font-weight-bold mt-2 w-75">
-          {/* display the error message if there is any */}
           {error && <ErrorAlert error={error} />}
 
-          {/* table name input */}
           <label htmlFor="table_name">Table Name</label>
           <input
             name="table_name"

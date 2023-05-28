@@ -9,9 +9,7 @@ import {
 
 // component for creating a new reservation or editing an existing one
 export default function NewReservation({
-  // whether the component is being used for editing an existing reservation
   edit,
-  // function to refresh the dashboard when a reservation is created or edited
   loadDashboard,
 }) {
   const [formData, setFormData] = useState({
@@ -22,11 +20,8 @@ export default function NewReservation({
     reservation_time: "",
     people: "",
   });
-  // use the history object to navigate to a different page after submitting the form
   const history = useHistory();
-  // get the reservation ID from the URL parameters (if this component is being used to edit an existing reservation)
   const { reservation_id } = useParams();
-  // state for any errors that occur while creating/editing a reservation
   const [errors, setErrors] = useState(null);
   useEffect(() => {
     const abortController = new AbortController();
@@ -44,55 +39,38 @@ export default function NewReservation({
     };
   }, [edit, reservation_id]);
 
-  // updates the state of the form when the user makes any changes to it
   function handleChange({ target }) {
     setFormData({
       ...formData,
-      // convert the number of people to a number (if the input name is "people")
       [target.name]:
         target.name === "people" ? Number(target.value) : target.value,
     });
   }
 
-  // if a reservation was created or edited, clicking the "submit" button will do the following:
   function onSubmit(event) {
-    // prevent the default form submission behavior
     event.preventDefault();
-    // create a new AbortController to allow the API request to be cancelled
     const abortController = new AbortController();
-    // convert the number of people to a number (if the input name is "people")
     formData.people = Number(formData.people);
-    // if this component is being used to edit an existing reservation
     if (edit) {
-      // make a PUT request to edit the reservation
       editReservation(reservation_id, formData, abortController.signal)
-        // update the form data with the new values
         .then(setFormData(formData))
-        // refresh the dashboard
         .then(loadDashboard)
-        // navigate back to the dashboard
         .then(() =>
           history.push(`/dashboard?date=${formData.reservation_date}`)
         )
-        // if there was an error, store the error message in state
         .catch((errors) => setErrors(errors));
     } else {
-      // make a POST request to create a new reservation
       createReservation(formData, abortController.signal)
-        // refresh the dashboard
         .then(loadDashboard)
-        // navigate back to the dashboard
         .then(() =>
           history.push(`/dashboard?date=${formData.reservation_date}`)
         )
-        // if there was an error, store the error message in state
         .catch((errors) => setErrors(errors));
     }
-    // return a function to abort the API request if the component is unmounted
     return () => abortController.abort();
   }
 
-  /** displays the reservation form to the user */
+// displays reservation form
   return (
     <div style={{ fontFamily: "Rubik" }}>
       <h2 className="font-weight-bold d-flex justify-content-center mt-4">

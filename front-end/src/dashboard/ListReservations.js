@@ -5,9 +5,8 @@ import { updateReservationStatus } from "../utils/api";
 export default function ListReservations({ reservation, loadDashboard }) {
   if (!reservation || reservation.status === "finished") return null;
 
-  /** handles if the user wants to cancel a reservation*/
+  // handles reservation cancellation - requires user confirmation
   function handleCancel() {
-    /** updates reservation status if user confirms */
     if (
       window.confirm(
         "Do you want to cancel this reservation? This cannot be undone."
@@ -26,7 +25,7 @@ export default function ListReservations({ reservation, loadDashboard }) {
     }
   }
 
-  /** displays a list of reservations for the given day */
+  // displays reservations for given day
   return (
     <tr style={{ fontFamily: "Rubik" }}>
       <th scope="row">{reservation.reservation_id}</th>

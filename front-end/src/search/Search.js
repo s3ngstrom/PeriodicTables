@@ -3,11 +3,7 @@ import ErrorAlert from "../layout/ErrorAlert";
 import { listReservations } from "../utils/api";
 import ListReservations from "../dashboard/ListReservations";
 
-/**
- * Search component allows the user to search for a specific reservation
- * by entering in a phone number into the search field and display all
- * reservation(s) under the give phone number
- */
+// allows the user to search for a specific reservation by entering in a phone number
 export default function Search() {
   const [mobileNumber, setMobileNumber] = useState("");
   const [reservations, setReservations] = useState([]);

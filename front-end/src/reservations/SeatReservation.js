@@ -18,15 +18,13 @@ import ErrorAlert from "../layout/ErrorAlert";
 function SeatReservation({ tables, setTables }) {
   const { reservation_id } = useParams();
   const history = useHistory();
-  // state to keep track of selected table
   const [tableId, setTableId] = useState("");
   const [currentReservation, setCurrentReservation] = useState();
   const [selectedTable, setSelectedTable] = useState("");
 
-  // state to keep track of error
   const [error, setError] = useState(null);
 
-  // fetch list of tables and set them to the state
+  // fetch list of tables and set state
   useEffect(() => {
     const abortController = new AbortController();
     listTables(abortController.signal).then(setTables).catch(setError);
@@ -41,27 +39,25 @@ function SeatReservation({ tables, setTables }) {
     return () => abortController.abort();
   }, [reservation_id]);
 
-  // handler to update the selected table
+  // handler to update selected table
   function changeHandler({ target: { value } }) {
     checkData(currentReservation, selectedTable);
     setTableId(value);
   }
 
   function checkData(currentReservation, selectedTable) {
-    //TODO unused variables
     const { capacity, reservation_id } = selectedTable;
     const { people } = currentReservation;
     console.log("Check Data", people, capacity, reservation_id);
     if (reservation_id) {
       setError("Table is occupied");
-      //  return error
     }
     if (people > capacity) {
       setError("Table is too small.");
-      //  return error
     }
   }
-  // handler to submit the seat form
+
+  // handler to submit seat form
   const handleSubmit = async (event) => {
     event.preventDefault();
     const abortController = new AbortController();
@@ -77,13 +73,12 @@ function SeatReservation({ tables, setTables }) {
     return abortController.abort();
   };
 
-  // handler to go back to the previous page
+  // return to previous page
   const handleCancel = (event) => {
     event.preventDefault();
     history.goBack();
   };
 
-  // generate options for table select element
   const tableOptions = tables.map((table) => (
     <option key={table.table_id} value={table.table_id}>
       {`${table.table_name} - ${table.capacity}`}

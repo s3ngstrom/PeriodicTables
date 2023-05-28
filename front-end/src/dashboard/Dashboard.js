@@ -6,11 +6,11 @@ import ListReservations from "./ListReservations";
 
 // Dashboard component receives date, reservations, tables and loadDashboard as props
 function Dashboard({ date, reservations, tables, loadDashboard }) {
-  // useHistory hook from react-router-dom to handle navigation between pages
+  // useHistory hook handles navigation between pages
   const history = useHistory();
 
-  // reservationsMap function maps through the reservations and returns a JSX component for each reservation
-  // it filters the reservations with a status that is not finished or cancelled
+  // maps through the reservations and returns a JSX component for each reservation
+  // filters reservations where status is not finished/cancelled
   const reservationsMap = () => {
     return reservations.map(
       (reservation) =>
@@ -25,7 +25,7 @@ function Dashboard({ date, reservations, tables, loadDashboard }) {
     );
   };
 
-  // tablesJSX function maps through the tables and returns a JSX component for each table
+  // maps through the tables and returns a JSX component for each table
   const tablesJSX = () => {
     return tables.map((table) => (
       <ListTables
@@ -36,15 +36,15 @@ function Dashboard({ date, reservations, tables, loadDashboard }) {
     ));
   };
 
-  // handleClick function is called when the previous, today or next button is clicked
-  // it uses the history object to navigate to the dashboard page with the updated date
+  // handleClick function is called when the previous, today or next buttons are clicked
+  // uses history to navigate to the dashboard page with the updated date
   function handleClick({ target }) {
     let newDate;
     let useDate;
 
-    // uses previous() to set the reservations' list date to the previous day
-    // uses next() to set the reservations' list date to the following day
-    // uses today() to set reservation's list date to the current day
+    // previous(): sets the reservations' list date to the previous day
+    // next(): to set the reservations' list date to the following day
+    // today(): to set reservation's list date to the current day
     if (!date) {
       useDate = today();
     } else {
