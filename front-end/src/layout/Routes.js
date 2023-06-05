@@ -92,6 +92,7 @@ function Routes() {
 
       <Route>
         <NotFound />
+        <Redirect to={`/404`} />
       </Route>
     </Switch>
   );
