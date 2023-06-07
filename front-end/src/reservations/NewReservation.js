@@ -110,7 +110,7 @@ export default function NewReservation({
             className="form-control mb-3 border-dark"
             name="mobile_number"
             id="mobile_number"
-            type="text"
+            type="number"
             onChange={handleChange}
             value={formData.mobile_number}
             required
