@@ -4,13 +4,13 @@ import { previous, next, today } from "../utils/date-time";
 import ListTables from "./ListTables";
 import ListReservations from "./ListReservations";
 
-// Dashboard component receives date, reservations, tables and loadDashboard as props
+// Dashboard component receives date, reservations, tables, and loadDashboard as props
 function Dashboard({ date, reservations, tables, loadDashboard }) {
   // useHistory hook handles navigation between pages
   const history = useHistory();
 
-  // maps through the reservations and returns a JSX component for each reservation
-  // filters reservations where status is not finished/cancelled
+  // Maps through the reservations and returns a JSX component for each reservation
+  // Filters reservations where status is not finished/cancelled
   const reservationsMap = () => {
     return reservations.map(
       (reservation) =>
@@ -25,7 +25,7 @@ function Dashboard({ date, reservations, tables, loadDashboard }) {
     );
   };
 
-  // maps through the tables and returns a JSX component for each table
+  // Maps through the tables and returns a JSX component for each table
   const tablesJSX = () => {
     return tables.map((table) => (
       <ListTables
@@ -36,15 +36,15 @@ function Dashboard({ date, reservations, tables, loadDashboard }) {
     ));
   };
 
-  // handleClick function is called when the previous, today or next buttons are clicked
-  // uses history to navigate to the dashboard page with the updated date
+  // handleClick function is called when the previous, today, or next buttons are clicked
+  // Uses history to navigate to the dashboard page with the updated date
   function handleClick({ target }) {
     let newDate;
     let useDate;
 
     // previous(): sets the reservations' list date to the previous day
     // next(): to set the reservations' list date to the following day
-    // today(): to set reservation's list date to the current day
+    // today(): to set the reservation's list date to the current day
     if (!date) {
       useDate = today();
     } else {
@@ -61,15 +61,18 @@ function Dashboard({ date, reservations, tables, loadDashboard }) {
 
     history.push(`/dashboard?date=${newDate}`);
   }
-  // the JSX returned by the Dashboard component contains the UI for the restaurant dashboard
-  // it includes a header, 3 buttons for navigating between days, and tables for reservations and tables
+
+  // The JSX returned by the Dashboard component contains the UI for the restaurant dashboard
+  // It includes a header, 3 buttons for navigating between days, and tables for reservations and tables
   return (
     <div className="w-80 ml-3 pr-4 pt-4" style={{ fontFamily: "Rubik" }}>
       <main>
-        <h1 className="font-weight-bold d-flex justify-content-center mt-5 mb-4">
+        {/* Restaurant Dashboard header */}
+        <h1 className="font-weight-bold d-flex justify-content-center mb-4">
           Restaurant Dashboard
         </h1>
 
+        {/* Buttons for navigating between days */}
         <div className="d-flex justify-content-center mb-4">
           <button
             className="btn-xs rounded btn-light btn-outline-dark m-1 p-1"
@@ -96,6 +99,8 @@ function Dashboard({ date, reservations, tables, loadDashboard }) {
             Next
           </button>
         </div>
+
+        {/* Reservations section */}
         <h3 className="mb-4 font-weight-bold text-start">
           Reservations for {date}
         </h3>
@@ -119,8 +124,11 @@ function Dashboard({ date, reservations, tables, loadDashboard }) {
 
           <tbody>{reservationsMap()}</tbody>
         </table>
+
         <br />
         <br />
+
+        {/* Tables section */}
         <h3 className="mb-4 font-weight-bold">Tables</h3>
 
         <table className="table table-hover m-1 text-nowrap mb-4">
