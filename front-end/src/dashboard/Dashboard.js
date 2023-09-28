@@ -124,6 +124,12 @@ function Dashboard({ date, reservations, tables, loadDashboard }) {
 
           <tbody>{reservationsMap()}</tbody>
         </table>
+         {/* Conditional rendering for "no reservations" message */}
+         {reservations.length === 0 && (
+          <p className="text-center font-weight-bold">
+            There are no current reservations for today.
+          </p>
+        )}
 
         <br />
         <br />

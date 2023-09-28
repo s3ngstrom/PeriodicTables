@@ -4,7 +4,7 @@ h2,
 h3,
 h4,
 button {
-  font-family: 'Montserrat', sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .side-bar {
@@ -15,7 +15,7 @@ button {
 }
 
 table {
-  font-family: 'Montserrat', sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border-collapse: collapse;
   border-radius: 10px;
   overflow: hidden;
@@ -65,8 +65,17 @@ tr:nth-child(odd) {
   font-weight: bold;
 }
 
+.brand-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
 h1 {
   color: #282f77;
+}
+
+p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @media only screen and (min-width: 768px) {

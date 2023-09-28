@@ -25,22 +25,22 @@ export default function ListReservations({ reservation, loadDashboard }) {
     }
   }
 
+  
   // displays reservations for given day
   return (
-    <tr style={{ fontFamily: "Rubik" }}>
+    <tr className="text-center">
       <th scope="row">{reservation.reservation_id}</th>
-      <td className="text-center">{reservation.first_name}</td>
-      <td className="text-center">{reservation.last_name}</td>
-      <td className="text-center">{reservation.mobile_number}</td>
-      <td className="text-center">
+      <td>{reservation.first_name}</td>
+      <td>{reservation.last_name}</td>
+      <td>{reservation.mobile_number}</td>
+      <td>
         {reservation.reservation_date.substr(0, 10)}
       </td>
-      <td className="text-center">
+      <td>
         {reservation.reservation_time.substr(0, 5)}
       </td>
-      <td className="text-center">{reservation.people}</td>
+      <td>{reservation.people}</td>
       <td
-        className="text-center"
         data-reservation-id-status={reservation.reservation_id}
       >
         {reservation.status}
@@ -48,7 +48,7 @@ export default function ListReservations({ reservation, loadDashboard }) {
 
       {reservation.status === "booked" && (
         <>
-          <td className="text-center">
+          <td>
             <Link to={`/reservations/${reservation.reservation_id}/edit`}>
               <button className="btn btn-sm btn-primary" type="button">
                 Edit
@@ -56,7 +56,7 @@ export default function ListReservations({ reservation, loadDashboard }) {
             </Link>
           </td>
 
-          <td className="text-center">
+          <td>
             <button
               className="btn btn-sm btn-danger"
               type="button"
@@ -67,7 +67,7 @@ export default function ListReservations({ reservation, loadDashboard }) {
             </button>
           </td>
 
-          <td className="text-center">
+          <td>
             <a href={`/reservations/${reservation.reservation_id}/seat`}>
               <button className="btn btn-sm btn-success" type="button">
                 Seat

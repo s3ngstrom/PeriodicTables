@@ -23,7 +23,7 @@ export default function ListTables({ table, reservation_id, loadDashboard }) {
 
 // displays list of tables
   return (
-    <tr className="text-center" style={{ fontFamily: "Rubik" }}>
+    <tr className="text-center">
       <th scope="row">{table.table_id}</th>
       <td>{table.table_name}</td>
       <td>{table.capacity}</td>
