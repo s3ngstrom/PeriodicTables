@@ -83,8 +83,66 @@ p {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-@media only screen and (min-width: 768px) {
-  .main-container {
+
+/* CSS for small screens */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: #3c3c57;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .navbar-brand {
+    margin-right: auto;
+    white-space: nowrap; /* Prevent "Periodic Tables" from breaking to the next line */
+  }
+
+  .navbar-nav {
+    display: flex;
     flex-direction: row;
+    align-items: center; /* Center menu items vertically */
+  }
+
+  .nav-item {
+    margin-right: 15px;
   }
 }
+
+
+/* CSS for larger screens */
+@media (min-width: 1201) {
+  .navbar-collapse {
+    background-color: #3c3c57;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+  }
+
+  .nav-item {
+    margin-right: 0.5rem;
+  }
+
+  .navbar-brand {
+    margin-right: auto;
+    white-space: normal;
+    font-size: 25px; /* Adjust the font size for "Periodic Tables" */
+
+  }
+}
+
+
+
+
+
+
