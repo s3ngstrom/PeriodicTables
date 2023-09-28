@@ -69,32 +69,36 @@ function Dashboard({ date, reservations, tables, loadDashboard }) {
       <main>
         {/* Restaurant Dashboard header */}
         <h1 className="font-weight-bold d-flex justify-content-center mb-4">
-          Restaurant Dashboard
+          Reservations Dashboard
         </h1>
 
         {/* Buttons for navigating between days */}
         <div className="d-flex justify-content-center mb-4">
           <button
-            className="btn-xs rounded btn-light btn-outline-dark m-1 p-1"
+            className="btn-xs rounded btn-info btn-outline-dark m-1 p-1"
             type="button"
             name="previous"
             onClick={handleClick}
+            style={{ transition: "background-color 0.3s" }}
+
           >
             Previous
           </button>
           <button
-            className="btn-xs rounded btn-success btn-outline-success m-1 text-white"
+            className="btn-xs rounded btn-success m-1 text-white"
             type="button"
             name="today"
             onClick={handleClick}
+            style={{ transition: "background-color 0.3s" }}
           >
             Today
           </button>
           <button
-            className="btn-xs rounded btn-light btn-outline-dark m-1"
+            className="btn-xs rounded btn-info btn-outline-dark m-1"
             type="button"
             name="next"
             onClick={handleClick}
+            style={{ transition: "background-color 0.3s" }}
           >
             Next
           </button>

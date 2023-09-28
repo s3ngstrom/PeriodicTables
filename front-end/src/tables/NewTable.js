@@ -62,7 +62,7 @@ export default function NewTable({ loadDashboard }) {
 
   return (
     // rendering form to create nnew table
-    <div style={{ fontFamily: "Rubik" }}>
+    <div>
       <h2 className="font-weight-bold d-flex justify-content-center mt-4">
         New Table
       </h2>

@@ -1,9 +1,14 @@
-body,
+
 h1,
 h2,
 h3,
 h4,
 button {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #deddee;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

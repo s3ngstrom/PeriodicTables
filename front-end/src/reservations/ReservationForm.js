@@ -10,7 +10,7 @@ export default function ReservationForm({
   errors,
 }) {
   return (
-    <div style={{ fontFamily: "Rubik" }}>
+    <div>
       <h2 className="font-weight-bold d-flex justify-content-center mt-4">
         {edit ? "Edit Reservation" : "New Reservation"}
       </h2>

@@ -17,7 +17,7 @@ function tableUpdate() {
     if (res.locals.thisReservation.people > res.locals.foundTable.capacity) {
       return next({
         status: 400,
-        message: `This table has a capacity of ${res.locals.foundTable.capacity}; they party has ${res.locals.thisReservation.people}.`,
+        message: `This table has a capacity of ${res.locals.foundTable.capacity}; the party has ${res.locals.thisReservation.people}.`,
       });
     }
 

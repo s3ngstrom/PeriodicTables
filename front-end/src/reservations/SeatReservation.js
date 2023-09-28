@@ -63,7 +63,7 @@ function SeatReservation({ tables, setTables }) {
     const abortController = new AbortController();
     console.log("INSIDE HANDLESUBMIT", tableId, reservation_id);
     try {
-      await updateTable(tableId, reservation_id, abortController.signal);
+      await updateTable (tableId, reservation_id, abortController.signal);
       history.push(`/dashboard?date=${currentReservation.reservation_date}`);
       console.log("HANDLE SUBMIT HERE<--------");
     } catch (error) {
